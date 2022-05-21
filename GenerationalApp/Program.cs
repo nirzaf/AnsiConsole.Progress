@@ -18,7 +18,7 @@ namespace GenerationalApp
         private static async Task ProcessAsync()
         {
             Trie<int> stringTrie = new();
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             var url = "http://gutendex.com//books?languages=en&mime_type=text%2Fplain";
             int index = 0;
             await AnsiConsole.Progress()

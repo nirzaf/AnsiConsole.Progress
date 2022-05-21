@@ -243,15 +243,11 @@ namespace GenerationalApp
 public ref struct SpanSplitEnumerator<T> where T : IEquatable<T>
 {
     private readonly ReadOnlySpan<T> _buffer;
-
     private readonly ReadOnlySpan<T> _separators;
     private readonly T _separator;
-
     private readonly int _separatorLength;
     private readonly bool _splitOnSingleToken;
-
     private readonly bool _isInitialized;
-
     private int _startCurrent;
     private int _endCurrent;
     private int _startNext;
@@ -307,10 +303,8 @@ public ref struct SpanSplitEnumerator<T> where T : IEquatable<T>
 
         ReadOnlySpan<T> slice = _buffer.Slice(_startNext);
         _startCurrent = _startNext;
-
         int separatorIndex = _splitOnSingleToken ? slice.IndexOf(_separator) : slice.IndexOf(_separators);
         int elementLength = (separatorIndex != -1 ? separatorIndex : slice.Length);
-
         _endCurrent = _startCurrent + elementLength;
         _startNext = _endCurrent + _separatorLength;
         return true;
